@@ -11,6 +11,8 @@ const {
   readRecipes,
   createRecipe,
   deleteRecipes,
+  likeRecipe,
+  unlikeRecipe,
 } = require("./database");
 
 app.get("/recipe", async (req, res) => {
@@ -32,8 +34,22 @@ app.post("/recipe", async (req, res) => {
 
 app.delete("/recipe/:id", async (req, res) => {
   const id = req.params.id;
-  console.log(`Deleted person at id point ${id}`);
+  console.log(`Deleted recipe at id point ${id}`);
   await deleteRecipes(id);
+  res.sendStatus(200);
+});
+
+app.post("/toggle-likes/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log("Add likes");
+  await likeRecipe(id);
+  res.sendStatus(200);
+});
+
+app.delete("/toggle-likes/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log("Remove like");
+  await unlikeRecipe(id);
   res.sendStatus(200);
 });
 
