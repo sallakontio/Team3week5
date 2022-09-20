@@ -85,6 +85,7 @@ const persistDeleteRequest = async (apiUrl, id) => {
 const persistRecipe = async (apiUrl, recipe) => {
   await fetch(apiUrl + '/recipe', {
     method: 'POST',
+    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(recipe),
   });
 };
