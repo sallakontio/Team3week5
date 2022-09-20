@@ -39,14 +39,14 @@ app.delete("/recipe/:id", async (req, res) => {
   res.sendStatus(200);
 });
 
-app.post("/toggle-favorites/:id", async (req, res) => {
+app.post("/toggle-favorite/:id", async (req, res) => {
   const id = req.params.id;
   console.log("Add likes");
   await likeRecipe(id);
   res.sendStatus(200);
 });
 
-app.delete("/toggle-favorites/:id", async (req, res) => {
+app.delete("/toggle-favorite/:id", async (req, res) => {
   const id = req.params.id;
   console.log("Remove like");
   await unlikeRecipe(id);
