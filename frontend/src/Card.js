@@ -30,7 +30,7 @@ export default function RecipeReviewCard({
   id,
   title,
   recipe,
-  imageUrl,
+  imageurl,
   author,
   date,
   isFavorite,
@@ -64,7 +64,7 @@ export default function RecipeReviewCard({
         title={title}
         subheader={date}
       />
-      <CardMedia component="img" height="194" image={imageUrl} />
+      <CardMedia component="img" height="194" image={imageurl} />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {intro}

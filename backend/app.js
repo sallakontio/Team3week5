@@ -46,12 +46,12 @@ app.post("/toggle-likes/:id", async (req, res) => {
   res.sendStatus(200);
 });
 
-app.delete("/toggle-likes/:id", async (req, res) => {
-  const id = req.params.id;
-  console.log("Remove like");
-  await unlikeRecipe(id);
-  res.sendStatus(200);
-});
+// app.delete("/toggle-likes/:id", async (req, res) => {
+//   const id = req.params.id;
+//   console.log("Remove like");
+//   await unlikeRecipe(id);
+//   res.sendStatus(200);
+// });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

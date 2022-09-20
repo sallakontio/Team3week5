@@ -57,6 +57,6 @@ async function likeRecipe(id) {
   await pool.query("update recipes set isFavorite=true where id=$1;", [id]);
 }
 
-async function unlikeRecipe(id) {
-  await pool.query("update recipes set isFavorite=false where id= $1;", [id]);
-}
+// async function unlikeRecipe(id) {
+//   await pool.query("update recipes set isFavorite=false where id= $1;", [id]);
+// }
