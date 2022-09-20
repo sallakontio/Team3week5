@@ -1,13 +1,6 @@
 const { Pool } = require("pg");
 const pool = new Pool();
-module.exports = {
-  readRecipes,
-  readRecipe,
-  createRecipe,
-  deleteRecipes,
-  likeRecipe,
-  unlikeRecipe,
-};
+
 async function readRecipes() {
   try {
     const res = await pool.query("select * from recipes");
@@ -57,6 +50,10 @@ async function likeRecipe(id) {
   await pool.query("update recipes set isFavorite=true where id=$1;", [id]);
 }
 
-// async function unlikeRecipe(id) {
-//   await pool.query("update recipes set isFavorite=false where id= $1;", [id]);
-// }
+module.exports = {
+  readRecipes,
+  readRecipe,
+  createRecipe,
+  deleteRecipes,
+  likeRecipe,
+};

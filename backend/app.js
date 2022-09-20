@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
@@ -12,7 +12,6 @@ const {
   createRecipe,
   deleteRecipes,
   likeRecipe,
-  unlikeRecipe,
 } = require("./database");
 
 app.get("/recipe", async (req, res) => {
@@ -45,13 +44,6 @@ app.post("/toggle-likes/:id", async (req, res) => {
   await likeRecipe(id);
   res.sendStatus(200);
 });
-
-// app.delete("/toggle-likes/:id", async (req, res) => {
-//   const id = req.params.id;
-//   console.log("Remove like");
-//   await unlikeRecipe(id);
-//   res.sendStatus(200);
-// });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
