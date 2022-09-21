@@ -1,9 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 4000;
 
 app.use(cors());
+app.options("*", cors());
 app.use(express.json());
 
 const {
@@ -12,15 +13,15 @@ const {
   createRecipe,
   deleteRecipes,
   likeRecipe,
-  unlikeRecipe,
 } = require("./database");
 
-app.get("/recipe", async (req, res) => {
-  console.log("Reading recipies");
-  return res.json(await readRecipes());
+app.get("/", async (req, res) => {
+  const recipes = await readRecipes();
+  const response = { data: recipes };
+  res.send(response);
 });
 
-app.get("/recipe/:id", async (req, res) => {
+app.get("/:id", async (req, res) => {
   const id = req.params.id;
   console.log(`Reading recipe at ${id}`);
   res.json(await readRecipe(id));
@@ -43,13 +44,6 @@ app.post("/toggle-favorite/:id", async (req, res) => {
   const id = req.params.id;
   console.log("Add likes");
   await likeRecipe(id);
-  res.sendStatus(200);
-});
-
-app.delete("/toggle-favorite/:id", async (req, res) => {
-  const id = req.params.id;
-  console.log("Remove like");
-  await unlikeRecipe(id);
   res.sendStatus(200);
 });
 

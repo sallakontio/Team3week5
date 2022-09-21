@@ -1,6 +1,6 @@
 export const LoadingState = {
-  Initial: 'initial',
-  Loading: 'loading',
+  Initial: "initial",
+  Loading: "loading",
 };
 
 const isOk = (statusCode) => {
@@ -21,7 +21,7 @@ const handleJsonResponse = async (response) => {
 
 export const getJson = async (url) => {
   const response = await fetch(url, {
-    method: 'GET',
+    method: "GET",
   });
   return handleJsonResponse(response);
 };
