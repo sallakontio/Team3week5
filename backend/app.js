@@ -40,7 +40,7 @@ app.delete("/recipe/:id", async (req, res) => {
   res.sendStatus(200);
 });
 
-app.post("/toggle-likes/:id", async (req, res) => {
+app.post("/toggle-favorite/:id", async (req, res) => {
   const id = req.params.id;
   console.log("Add likes");
   await likeRecipe(id);
