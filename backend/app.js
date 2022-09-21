@@ -1,9 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = process.env.PORT || 4000;
+const port = 4000;
 
 app.use(cors());
+app.options("*", cors());
 app.use(express.json());
 
 const {
@@ -14,12 +15,13 @@ const {
   likeRecipe,
 } = require("./database");
 
-app.get("/recipe", async (req, res) => {
-  console.log("Reading recipies");
-  return res.json(await readRecipes());
+app.get("/", async (req, res) => {
+  const recipes = await readRecipes();
+  const response = { data: recipes };
+  res.send(response);
 });
 
-app.get("/recipe/:id", async (req, res) => {
+app.get("/:id", async (req, res) => {
   const id = req.params.id;
   console.log(`Reading recipe at ${id}`);
   res.json(await readRecipe(id));
