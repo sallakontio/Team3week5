@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <Container fixed>
-        <Box display="none" marginTop={1} marginBottom={1}>
+        <Box display="flex" marginTop={1} marginBottom={1}>
           <TextField
             fullWidth
             value={apiUrlPrompt}
