@@ -127,7 +127,7 @@ const useRecipes = () => {
         header,
         recipe,
         author,
-        date: "20.06.2022",
+        date: new Date().toLocaleString(),
         imageurl,
         isFavorite: false,
         intro,
